@@ -1,0 +1,27 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<br />
+		<br />		
+		Ok, you should be in a room with him now. The room info:
+		<br />
+		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<br />
+		The room ID is: <%=newRoomID%>
+		<br />
+		<br />
+		The membershipID is: <%=membershipID%>
+		<br />
+		<br />
+		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<br />
+		<br />
+		If your problem/question has been resolved, please click the below button to delete the room:
+		<br />
+		<br />
+		<form action="/actions/deleteRoom" method="post">
+			<input type="submit" value="Delete the room"/>
+		</form>
+	</body>
+</html>

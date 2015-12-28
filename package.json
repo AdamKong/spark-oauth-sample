@@ -1,0 +1,32 @@
+{
+  "name": "Adam's Bot",
+  "version": "1.0.0",
+  "description": "This is a simple Spark OAuth Sample.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamKong/spark-oauth-sample.git"
+  },
+  "keywords": [
+    "Spark",
+    "OAuth",
+    "Sample"
+  ],
+  "author": "Adam Kong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamKong/spark-oauth-sample/issues"
+  },
+  "homepage": "https://github.com/AdamKong/spark-oauth-sample#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "request": "^2.67.0"
+  }
+}
