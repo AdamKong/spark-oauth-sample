@@ -28,7 +28,7 @@ module.exports = function (config) {
 				next();
 			}else{
 				res.render('error', {
-					error: 'Please come in from home page'
+					error: 'Please come in from initial page'
 				});
 			}
 		})
@@ -47,7 +47,7 @@ module.exports = function (config) {
 							req.session.accessToken = null;
 							req.session.refreshToken = null;
 							res.render('error', {
-								error: 'Illegal Operation, You are logged out now!'
+								error: 'Illegal Operation, You are out now!'
 							});
 						}
 					} else {

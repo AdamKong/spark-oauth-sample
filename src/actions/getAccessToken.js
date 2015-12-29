@@ -27,7 +27,7 @@ module.exports = function (config, oAuthCode, state, callback) {
 		});
 
 	} else {
-		console.log('The state has been tampered. Redirect to home page');
-		callback('The state has been tampered. Redirect to home page', null);
+		console.log('The state has been tampered.');
+		callback('The state has been tampered.', null);
 	}
 };

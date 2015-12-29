@@ -1,11 +1,11 @@
 {
-"host":"web1.tunnlr.com:12826/",
+"host":"127.0.0.1",
 "port":"3000",
 "responseType":"code",
 "grantType":"authorization_code",
 "clientID":"your_real_clientID",
-"redirectURI":"http%3A%2F%2Fweb1.tunnlr.com%3A12826%2Fauth%2Fspark%2Fcallback",
-"redirectURIUnencoded":"http://web1.tunnlr.com:12826/auth/spark/callback",
+"redirectURI":"http%3A%2F%2Fexample.com%3A12826%2Fauth%2Fspark%2Fcallback",
+"redirectURIUnencoded":"http://example.com/auth/spark/callback",
 "scope":"spark%3Arooms_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Apeople_read%20spark%3Amemberships_write%20spark%3Amessages_write%20spark%3Arooms_write",
 "state":"test",
 "cilentSecret":"Your_real_client_secret"

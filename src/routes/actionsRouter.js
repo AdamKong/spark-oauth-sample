@@ -13,7 +13,7 @@ actionsRouter.route('/createAndJoinRoom')
 			req.session.accessToken = null;
 			req.session.refreshToken = null;
 			res.render('error', {
-				error: 'Illegal Operation, You are logged out now!'
+				error: 'Illegal Operation, You are out now!'
 			});
 		}
 	})
@@ -67,7 +67,7 @@ actionsRouter.route('/deleteRoom')
 			req.session.accessToken = null;
 			req.session.refreshToken = null;
 			res.render('error', {
-				error: 'Illegal Operation, You are logged out now!'
+				error: 'Illegal Operation, You are out now!'
 			});
 		}
 	})
@@ -84,7 +84,7 @@ actionsRouter.route('/deleteRoom')
 			} else {
 				console.log('Deleting room failed.');
 				res.render('error', {
-					error: err + 'RoomID:' + newRoomID + '. Please delete it from Web API.'
+					error: err + 'RoomID:' + newRoomID + '. Please delete it from Web version API.'
 				});
 			}
 		});

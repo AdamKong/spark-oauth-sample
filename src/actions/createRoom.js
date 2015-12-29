@@ -40,8 +40,8 @@ module.exports = function (accessToken, roomName, userEmail, callback) {
 	});
 
 	roomRequest.on('error', function (err) {
-		console.log('problem with room request: ' + err.message);
-		callback('creating room failed:' + err, null);
+		console.log('problem of room request: ' + err.message);
+		callback('creating of failed:' + err, null);
 	});
 
 	// write data to room request body

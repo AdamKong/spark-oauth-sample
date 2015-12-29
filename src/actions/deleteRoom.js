@@ -19,13 +19,13 @@ module.exports =
 				callback(null);
 			} else {
 				console.log('res.statusCode: ' + res.statusCode);
-				callback('Problem with deleting room. res.statusCode = ' + res.statusCode);
+				callback('Problem of deleting room. res.statusCode = ' + res.statusCode);
 			}
 		});
 
 		deleteRequest.on('error', function (err) {
-			console.log('Problem with deleting room: ' + err.message);
-			callback('Problem with deleting room: ' + err);
+			console.log('Problem of deleting room: ' + err.message);
+			callback('Problem of deleting room: ' + err);
 		});
 
 		deleteRequest.end();

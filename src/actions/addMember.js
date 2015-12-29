@@ -31,8 +31,8 @@ module.exports = function (accessToken, newRoomID, userEmail, callback) {
 	});
 
 	memberRequest.on('error', function (err) {
-		console.log('problem with adding member request: ' + err.message);
-		callback('problem with adding member request: ' + err, null);
+		console.log('problem of adding member request: ' + err.message);
+		callback('problem of adding member request: ' + err, null);
 	});
 
 	// write data to member request body
