@@ -1,6 +1,4 @@
 # Spark OAuth Sample
-A sample of doing Spark OAuth.
-=================================
 
 Function Description: If you want to do something (like create a room, or send a message) on Spark on behalf of someone else, you need to request permissions to the person. This application gives you a user interface (web) where the person can accept your request and send the generated Access Token to you (in a Spark room). You can define the access scope, client ID, client secret(this changes everytime you log in/out your Spark account) in a configuration file.
 
