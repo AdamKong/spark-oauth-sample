@@ -1,5 +1,5 @@
 {
-  "name": "Adam's Bot",
+  "name": "spark_oauth",
   "version": "1.0.0",
   "description": "This is a simple Spark OAuth Sample.",
   "main": "app.js",
@@ -27,6 +27,8 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
-    "request": "^2.67.0"
+    "log4js": "^0.6.29",
+    "request": "^2.67.0",
+    "uuid": "^2.0.1"
   }
 }

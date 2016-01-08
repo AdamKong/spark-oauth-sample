@@ -7,12 +7,29 @@
 		You got error:
 		<hr style="border: 1px #B0C4DE solid;width:50%;" align="left"/>
 		<br />
-		Error Message: <%=error%>
+		Error Message: <span style="text-decoration:none;color:red"><%=error%></span>
 		<br />
 		<br />
 		<hr style="border: 1px #B0C4DE solid;width:50%;" align="left"/>
+		<% if (tokenInfo) {%>
+		<br />
+		The below is the Info of the Token you need to copy and send to the requester:
+		<br />
+		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<br />
+		Access Token: <%=tokenInfo.access_token%>
+		<br /><br />
+		It expires in: <%=tokenInfo.expires_in%>
+		<br /><br />
+		Refresh Token: <%=tokenInfo.refresh_token%>
+		<br /><br />
+		It expires in: <%=tokenInfo.refresh_token_expires_in%>
+		<br />
+		<br />	
+		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<%}%>
 		<br />
 		<br />
-		Next, click <a href="/" style="text-decoration:none;color:red">Here</a> to go to initial page!
+		The session has been destroyed. Next, click <a href="/" style="text-decoration:none;color:red">Here</a> to go to home page!
 	</body>
 </html>

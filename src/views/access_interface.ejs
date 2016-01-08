@@ -1,14 +1,12 @@
 <html>
 	<head>
-	<script type="text/javascript" src="/js/roomname_email.js"></script>
+		<script type='text/javascript' src='/js/roomName.js'></script>
 	</head>
 	<body>
 		<br />
-		<br />
-		The below is the Info of the Tokens you give:
+		The below is the Info of the Token you give to the requester:
 		<br />
 		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
-		<br />
 		<br />
 		Access Token: <%=tokenInfo.access_token%>
 		<br /><br />
@@ -19,27 +17,21 @@
 		It expires in: <%=tokenInfo.refresh_token_expires_in%>
 		<br />
 		<br />
+		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<br />		
+		All the authorization process is complete now! You can either send the Token info to the requester by copy/paste direclty, or use the below demo to do it:
 		<br />
 		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
+		<br/>
+		The demo uses the Token above to create a room, add the requester into it, then send the Token info there (Unrelated to the authorization process).
 		<br />
-		<br />
-		Ok, you have accepted the request and granted the permissions to me. All the process is complete now!
-		<br />
-		<br />
-		As an experience, you can use the above Access Token to create a demo room from below:
-		<br /><br />
-		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
 		<form action="/actions/createAndJoinRoom" method="post">
-			<br /><br />
-			Room Name: <input type="text" name="roomName" value="Rock Spark Room"/> (Be used as room name, 2~20 characters. No special character allowed)
-			<br /><br />
-			Email Address: <input type="text" name="userEmail" value="Email Address"/> (The email address of the person you want to add in)
-			<br /><br />
+			<br />
+			Room Name: <input type="text" name="roomName" value="Rock Spark Room"/> (3~20 characters.)
 			<input type="submit" value="submit"/>
 		</form>
 		<br />
 		<hr style="border: 1px #B0C4DE solid;width:70%;" align="left"/>
-		<br />
 		<br />
 		<br />
 	</body>

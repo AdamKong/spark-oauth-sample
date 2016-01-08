@@ -1,12 +1,18 @@
 {
-"host":"127.0.0.1",
-"port":"3000",
-"responseType":"code",
-"grantType":"authorization_code",
-"clientID":"your_client_ID",
-"redirectURI":"http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fspark%2Fcallback",
-"redirectURIUnencoded":"http://127.0.0.1:3000/auth/spark/callback",
-"scope":"spark%3Arooms_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Apeople_read%20spark%3Amemberships_write%20spark%3Amessages_write%20spark%3Arooms_write",
-"state":"test",
-"cilentSecret":"your_client_secret"
+	"server": {
+		"host": "127.0.0.1",
+		"port": "3000"
+	},
+	"oauth": {
+		"responseType": "code",
+		"grantType": "authorization_code",
+		"clientID": "Ca1d294c197fe25cfff50cee435e4cd79572ff5c10913dd9247571217d9396165",
+		"redirectURI": "http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fspark%2Fcallback",
+		"redirectURIUnencoded": "http://127.0.0.1:3000/auth/spark/callback",
+		"scope": "spark%3Arooms_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Apeople_read%20spark%3Amemberships_write%20spark%3Amessages_write%20spark%3Arooms_write",
+		"state": "test",
+		"contactEmail": "joyin@cisco.com",
+		"cilentSecret": "4e5fe9c18b4cdc1209055cfd020be26f04e4fe4f30280d35f733ebadefcb5f47"
+	},
+	"logLevel": "debug"
 }

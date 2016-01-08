@@ -1,6 +1,6 @@
 # Spark OAuth Sample
 
-Function Description: If you want to do something (like create a room, or send a message) on Spark on behalf of someone else, you need to request permissions to the person. This application gives you a user interface (web) where the person can accept your request and send the generated Access Token to you (in a Spark room). You can define the access scope, client ID, client secret(this changes everytime you log in/out your Spark account) in a configuration file.
+Function Description: If you want to do something (like create a room, or send a message) on Spark on behalf of someone else, you need to request permissions to the person. This application provides you with a user interface (web) where the person can accept your request and send the generated token to you. You can define the access scope, client ID, client secret(note this changes everytime you log in/out your Spark account) in a configuration file.
 
 Installation
 ============
@@ -8,13 +8,13 @@ Installation
 To get started you will first need to have Node.js installed. Going to [node.js](https://nodejs.org/), it will automatically detect your OS and offer the download link. After you get the installer, just double click it and follow the "next step" to complete the installation. For Linux OS, it provides [Linux Binaries (.tar.gz)](https://nodejs.org/en/download/) in both 32-bit and 64-bit. Download the .gz file to your machine and uncompress it, configure the PATH, then you can use it.
 
 
-To install this sample to your local machine, you can either use NPM (Node Package Manager), just do: 
+To install this sample to your local machine, you can either use NPM (Node Package Manager): 
 
 <pre>
-~$ npm install Spark-OAuth-Sample (coming soon)
+~$ npm install Spark-OAuth-Sample
 </pre>
 
-or just download it from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
+or download it from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
 
 
 Configuration
@@ -22,11 +22,11 @@ Configuration
 
 1. You will first need to create an application on "Spark For Developer" platform following the instructions. 
 
-2. After an application is created, you will see a unique Client ID and a unique Client Secret ID in the top-right of the page.
+2. After an application is created, you will see a unique client ID and a unique client Secret ID in the top-right of the page.
 
 3. Go to the "conf" folder of this sample, open the config.json.
 
-4. Copy the Client ID to the "clientID" field, and Copy the Client Secret to the "clientSecret" field.
+4. Copy the client ID to the "clientID" field, and copy the client Secret to the "clientSecret" field.
 
 5. Choose the redirect URL you want to use, and copy it to "redirectURIUnencoded" field. The redirect URL must be one of the redirect URLs in your application.
 
@@ -44,13 +44,13 @@ Configuration
 Running
 -------
 
-You run the application within the project directory with:
+You can run the application within the project directory with:
 
 <pre>
 	node app.js
 </pre>
 
-
+http://127.0.0.1:3000/ is the home page.
 
 
 

@@ -1,33 +1,28 @@
 var request = require('request');
 
-module.exports = function (config, oAuthCode, state, callback) {
+module.exports = function (oauth, sessionID, oAuthCode, writeLog, callback) {
 
-	// Comparing the original state and the state sent back from SPARK API, to see if data is tampered/
-	if (state === config.state) {
+	writeLog(sessionID, 'debug', 'Start getting token now.');
+	
+	var postData = {
+		'grant_type': oauth.grantType,
+		'client_id': oauth.clientID,
+		'client_secret': oauth.cilentSecret,
+		'code': oAuthCode,
+		'redirect_uri': oauth.redirectURIUnencoded
+	};
 
-		var postData = {
-			'grant_type': config.grantType,
-			'client_id': config.clientID,
-			'client_secret': config.cilentSecret,
-			'code': oAuthCode,
-			'redirect_uri': config.redirectURIUnencoded
-		};
-
-		// Do Post to gain the Access Token
-		request.post({
-			url: 'https://api.ciscospark.com/v1/access_token',
-			form: postData
-		}, function (err, response, body) {
-			if (!err) {
-				callback(null, JSON.parse(body));
-			} else {
-				console.log('Get error when requesting Access Token:' + err);
-				callback('Get error when requesting Access Token:' + err, null);
-			}
-		});
-
-	} else {
-		console.log('The state has been tampered.');
-		callback('The state has been tampered.', null);
-	}
+	// Do Post to gain the Access Token
+	request.post({
+		url: 'https://api.ciscospark.com/v1/access_token',
+		form: postData
+	}, function (err, response, body) {
+		if (!err) {
+			writeLog(sessionID, 'debug', 'Got response from Spark API: ' + body);
+			callback(null, JSON.parse(body));
+		} else {
+			writeLog(sessionID, 'fatal', 'Got problem when requesting token: ' + err);
+			callback('Got problem when requesting token: ' + err, null);
+		}
+	});
 };

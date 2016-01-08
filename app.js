@@ -5,18 +5,20 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
+var uuid = require('uuid');
 
-// The config.json contains the basical configuration items (some would be confidential like 
-// ClientID/Client Secret). If you want to install this program, you need to change them accordingly. 
-// If you want to make the program public, please protect the config file well (like remove or 
-// edit it before uploading).
- 
 var config = JSON.parse(fs.readFileSync(__dirname + '/conf/config.json'));
-var port = config.port;
-var host = config.host;
+var port = config.server.port;
+var host = config.server.host;
 
-var authRouter = require('./src/routes/authRouter')(config);
-var actionsRouter = require('./src/routes/actionsRouter');
+// Import logging functions
+var writeLog = require('./src/controllers/logController.js')(config.logLevel);
+
+// Import authentication function
+var authRouter = require('./src/routes/authRouter')(config.oauth, writeLog);
+
+// Import API operation functions
+var actionsRouter = require('./src/routes/actionsRouter')(config.oauth.contactEmail, writeLog);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -26,12 +28,19 @@ app.set('view engine', 'ejs');
 
 app.use(cookieParser('everything is awesome!'));
 app.use(session({
+	genid: function (req) {
+		return uuid.v4();
+	},
 	secret: 'everything is awesome!',
 	resave: false,
 	saveUninitialized: false
 }));
 
 app.get('/', function (req, res) {
+	// Define a session variable, for a) making sure the session IDs subsequentially
+	// obtained from session are the same. b) avoid directly accessing the auth/spark router.
+	req.session.mySessionID = req.sessionID;
+	writeLog(req.sessionID, 'debug', 'Added a session variable "mySessionID"');
 	res.render('index', {
 		deleteRoom: ''
 	});
@@ -39,10 +48,8 @@ app.get('/', function (req, res) {
 
 // This is the OAuth Router
 app.use('/auth', authRouter);
-
-// This is the Router, for creating room, adding user in, and deleting room.
+// This is for creating room, adding user in, sending message, deleting room.
 app.use('/actions', actionsRouter);
-
 app.listen(port, host, function (err) {
 	if (err) {
 		console.log('Server is failed to startup at ' + port + '@' + host + ':' + err);

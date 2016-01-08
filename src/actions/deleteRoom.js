@@ -1,7 +1,10 @@
 var https = require('https');
 
 module.exports =
-	function (roomId, accessToken, callback) {
+	function (roomId, accessToken, sessionID, writeLog, callback) {
+		
+		writeLog(sessionID, 'debug', 'Start deleting the roow now.');
+	
 		var deleteOptions = {
 			host: 'api.ciscospark.com',
 			path: '/v1/rooms/' + roomId,
@@ -12,21 +15,22 @@ module.exports =
 			}
 		};
 
-		// Deleting the room based on the roomID.
+		// Deleting the room according to the roomID.
 		var deleteRequest = https.request(deleteOptions, function (res) {
 			if (res.statusCode === 204) {
-				console.log('Room has been deleted: ' + roomId);
+				writeLog(sessionID, 'debug', 'Room has been deleted: ' + roomId + '. Session is going to be destroyed.');
 				callback(null);
 			} else {
-				console.log('res.statusCode: ' + res.statusCode);
-				callback('Problem of deleting room. res.statusCode = ' + res.statusCode);
+				writeLog(sessionID, 'error', 'Problem of deleting room. res.statusCode = ' + res.statusCode + '. Session is going to be destroyed.');
+				callback('Problem of deleting room. res.statusCode = ' + res.statusCode + '. Session is going to be destroyed.');
 			}
 		});
 
 		deleteRequest.on('error', function (err) {
-			console.log('Problem of deleting room: ' + err.message);
-			callback('Problem of deleting room: ' + err);
+			writeLog(sessionID, 'error', 'Problem of deleting room:' + err.message + '. Session is going to be destroyed.');
+			callback('Problem of deleting room. res.statusCode = ' + err.message + '. Session is going to be destroyed.');
 		});
 
+		deleteRequest.write('');
 		deleteRequest.end();
 	};
