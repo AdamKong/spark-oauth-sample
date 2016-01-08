@@ -50,7 +50,7 @@ You can run the application within the project directory with:
 	node app.js
 </pre>
 
-http://127.0.0.1:3000/ is the home page.
+http://host:port/ is the home page.
 
 
 
