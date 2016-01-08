@@ -36,9 +36,13 @@ Configuration
 
 8. Encode the values (from a tool, i.e. http://meyerweb.com/eric/tools/dencoder/), then fill the encoded values into "scope" field.
 
-9. If you want to put the sample into a public address, then you will need to change the hostname 127.0.0.0 and port 300 to the real one.
+9. Change the "contactEmail" field to your email address (as the requester).
 
-10. Save it, and it's compelte.
+10. You can change the 'state' field to a more secure string (i.e. a random UUID string), or keep it as it as just for testing.
+
+11. If you want to put the sample into a public address, then you will need to change the hostname 127.0.0.0 and port 300 to the real ones.
+
+12. Save it, and it's compelte.
 
 
 Running
