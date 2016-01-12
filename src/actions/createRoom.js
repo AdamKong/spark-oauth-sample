@@ -8,7 +8,7 @@ module.exports = function (token, roomName, requesterEmail, sessionID, writeLog,
 	});
 
 	var roomOptions = {
-		host: 'api.ciscosparkxx.com',
+		host: 'api.ciscospark.com',
 		path: '/v1/rooms',
 		method: 'post',
 		headers: {
