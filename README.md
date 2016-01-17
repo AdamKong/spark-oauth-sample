@@ -11,7 +11,7 @@ To get started you will first need to have Node.js installed. Going to [node.js]
 To install this sample to your local machine, you can either use NPM (Node Package Manager): 
 
 <pre>
-~$ npm install Spark-OAuth-Sample (coming soon)
+	npm install --save spark-oauth-sample
 </pre>
 
 or download it from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
@@ -56,6 +56,6 @@ You can run the application within the project directory with:
 
 http://host:port/ is the home page.
 
-
+Note: A token management center will come soon!
 
 
