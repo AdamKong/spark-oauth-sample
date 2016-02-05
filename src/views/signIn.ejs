@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/adminSignIn.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center
+		<br /><br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />Sign In<br /><br />	
+		<form action="/admin/signIn" method="post">
+			Username: <input type="text" name="username"/> (Only letter, number and underscore are allowed in username, within 3~20 characters!)<br /><br /> 
+			Password: <input type="text" name="password"/> (6 characters at least)<br /><br />
+			<input type="reset" value="Reset"/>   <input type="submit" value="Login"/>
+		</form>
+	</body>
+</html>

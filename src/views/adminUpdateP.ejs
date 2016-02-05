@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/adminUpdateP.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center - Click <a href="/admin/adminUserLogout" style="text-decoration:none;color:red" onclick="return confirm('Are you sure you want to log out?')">Logout</a> to sign out.
+		<br />
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<%if(username === superAdminUsername) {%>
+		You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red">Super Admin</a> (Click to view/update your profile.)
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/superAdmin" style="text-decoration:none;color:red">HERE</a> to manage all the administrators.
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/signUpPage" target="_blank" style="text-decoration:none;color:red">HERE</a> to create a new administrator account.	
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>		
+		<%}%>		
+		<br />
+		<%if (username === superAdminUsername) {%>
+			Modify Profile:
+		<%} else {%>
+			Modify Profile - You logged in as <span style="text-decoration:none;color:red"><%=username%></span>
+		<%}%>
+		<br /><br />
+		<form action="/admin/updateProfile" method="post">
+			<%if (username === superAdminUsername) {%>
+			Username: <%=username%> (The username of the super account can not be modified.)
+			<%} else {%>
+			Username: <%=username%> (Contact super admin to get your username changed.)
+			<%}%>
+			<br /><br />
+			<input type="hidden" name="username" value="<%=username%>" />
+			New Password: <input type="text" name="password"/> (6 characters at least, or leave it as empty for no modification.)<br /><br />
+			Enter Again: <input type="text" name="re_password"/><br /><br />
+			Email: <input type="text" name="email" value="<%=email%>"/><br /><br /> 
+			<input type="reset" value="Reset"/>   <input type="submit" value="Update"/>
+		</form>
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />
+	</body>
+</html>

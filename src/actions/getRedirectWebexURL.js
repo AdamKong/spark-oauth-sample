@@ -1,7 +1,6 @@
 var request = require('request');
 
 module.exports = function (oauth, sessionID, writeLog, callback) {
-	
 	writeLog(sessionID, 'debug', 'Start requesting a webex link now.');
 	// I can not find any original HTTP/HTTPS functions to follow redirect in HTTP/HTTPS packages.
 	// Since the "request" supports HTTPS and follows redirects by default, it would be my need.

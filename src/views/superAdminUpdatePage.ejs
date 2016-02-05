@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/superAdminUpdateP.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center - Click <a href="/admin/adminUserLogout" style="text-decoration:none;color:red" onclick="return confirm('Are you sure you want to log out?')">Logout</a> to sign out.
+		<br /><br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red">Super Admin</a> (Click to view/update your profile.)
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/signUpPage" target="_blank" style="text-decoration:none;color:red">HERE</a> to create a new administrator account.	
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/superAdmin" style="text-decoration:none;color:red">HERE</a> to manage all the administrators.
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />Modify Profile:<br /><br />
+		<form action="/admin/superAdminUpdateProfile" method="post">
+			User ID: <%=userID%>
+			<br /><br />
+			<%if (username === superAdminUsername) {%>
+				New Username: <input type="text" name="username" readonly="readonly" value="<%=username%>"/> (Super '<%=superAdminUsername%>' can not modify the '<%=superAdminUsername%>' username from here. Go to config.json file to modify it instead.)
+			<%} else {%>
+				New Username: <input type="text" name="username" value="<%=username%>"/>
+			<%}%>
+			<br /><br />
+			<input type="hidden" name="userID" value="<%=userID%>">
+			<input type="hidden" name="superAdminID" value="<%=superAdminID%>">
+			New Password: <input type="text" name="password"/> (6 characters at least, or leave it as empty for no modification.)<br /><br />
+			Enter Again: <input type="text" name="re_password"/>
+			<br /><br />
+			Email: <input type="text" name="email" value="<%=email%>"/><br /><br /> 
+			<input type="reset" value="Reset"/>   <input type="submit" value="Update"/>
+		</form>
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />
+		<br />
+	</body>
+</html>

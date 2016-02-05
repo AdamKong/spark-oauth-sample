@@ -1,12 +1,16 @@
 <html>
 	<head>
+		<script type='text/javascript' src='/js/avoidMulCli.js'></script>
 	</head>
 	<body>
-		I want to request permissions of your Spark account. 
+		I want to request permissions of your Spark account.
 		<br/><br/>
-		Click <a href="/auth/spark" style="text-decoration:none;color:red">HERE</a> to start granting access. 
-		<br/><br/>
-		After clicking it, please input your email address in the next page. 
+		Click the below button to start granting access:
+		<br /><br />
+		<form action="/auth/spark" method="post">
+			<input type="submit" name="s1" value="Granting Access"/>
+		</form>
+		After clicking it, please wait for a moment. And in the next page please input your email address. 
 		<br/><br/>
 		You will be prompted to accept the request later (The detailed access items will be listed out.).
 		<br />	

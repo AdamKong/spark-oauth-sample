@@ -112,7 +112,7 @@ module.exports = function (requesterEmail, writeLog) {
 					if (!err) {
 						sessionDisabler(req, writeLog, 'line 113 of actionsRouter.js');
 						res.render('index', {
-							deleteRoom: 'The room has been deleted:' + newRoomID + ' . Session has been destroyed as well.'
+							deleteRoom: 'The room with the room ID: ' + newRoomID + ' has been deleted. Session has been destroyed as well.'
 						});
 					} else {
 						sessionDisabler(req, writeLog, 'line 118 of actionsRouter.js');

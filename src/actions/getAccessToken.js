@@ -3,7 +3,7 @@ var request = require('request');
 module.exports = function (oauth, sessionID, oAuthCode, writeLog, callback) {
 
 	writeLog(sessionID, 'debug', 'Start getting token now.');
-	
+
 	var postData = {
 		'grant_type': oauth.grantType,
 		'client_id': oauth.clientID,

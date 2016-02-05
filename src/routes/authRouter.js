@@ -4,7 +4,7 @@ var uuid = require('uuid');
 var authRouter = express.Router();
 var sessionDisabler = require('../controllers/sessionDisabler.js');
 
-module.exports = function (oauth, writeLog) {
+module.exports = function (oauth, dbConfig, writeLog) {
 
 	// This is the router of sending request to get Webex link, after user input
 	// email it redirects to Spark API (api.ciscospark.com/v1/access_token) to
@@ -20,7 +20,7 @@ module.exports = function (oauth, writeLog) {
 					error: 'Please do not come in auth/spark directly. Illegal Operation, session destroyed!',
 					tokenInfo: ''
 				});
-			}else if (req.session.sparkCallbackToken) {
+			} else if (req.session.sparkCallbackToken) {
 				writeLog(theSessionID, 'fatal', 'You have ever reached auth/spark in the session. Illegal Operation, session is going to be destroyed!');
 				sessionDisabler(req, writeLog, 'line 25 of authRouter.js');
 				res.render('error', {
@@ -31,7 +31,7 @@ module.exports = function (oauth, writeLog) {
 				next();
 			}
 		})
-		.get(function (req, res) {
+		.post(function (req, res) {
 			// Add a new session variable, for security purpose of next step.
 			req.session.sparkCallbackToken = uuid.v4();
 			var theSessionID = req.sessionID;
@@ -65,7 +65,7 @@ module.exports = function (oauth, writeLog) {
 					error: 'Please do not come in auth/spark/callback directly. Illegal Operation, session destroyed!',
 					tokenInfo: ''
 				});
-			}else if (req.session.token) {
+			} else if (req.session.token) {
 				writeLog(theSessionID, 'fatal', 'You have ever reached auth/spark/callback in the session. Illegal Operation, session is going to be destroyed!');
 				sessionDisabler(req, writeLog, 'line 70 of authRouter.js');
 				res.render('error', {
@@ -80,6 +80,8 @@ module.exports = function (oauth, writeLog) {
 			req.session.token = 'initial_value';
 			var theSessionID = req.sessionID;
 			// Validate that if the "state" has been tampered.
+			console.log(req.query.state);
+			console.log(oauth.state);
 			if (req.query.state !== oauth.state) {
 				writeLog(theSessionID, 'fatal', '"state" has been tampered. Session is going to be destroyed!');
 				sessionDisabler(req, writeLog, 'line 85 of authRouter.js');
@@ -87,7 +89,7 @@ module.exports = function (oauth, writeLog) {
 					error: '"state" has been tampered. Session has been destroyed!',
 					tokenInfo: ''
 				});
-			}else {
+			} else {
 				require('../actions/getAccessToken.js')(oauth,
 					theSessionID,
 					req.query.code,
@@ -95,19 +97,57 @@ module.exports = function (oauth, writeLog) {
 					function (err, bodyObj) {
 						if (!err) {
 							if (bodyObj.access_token) {
-									req.session.token = bodyObj;
-									writeLog(theSessionID, 'debug', 'Token is saved in session.');
-									res.render('access_interface', {
-										tokenInfo: bodyObj
+								req.session.token = bodyObj;
+								writeLog(theSessionID, 'debug', 'Token is saved in session.');
+								require('../actions/getUserEmail.js')(bodyObj.access_token,
+									theSessionID,
+									writeLog,
+									function (error, email) {
+										if (!error) {
+											var dbFunctions = require('../controllers/dbController.js')(
+												dbConfig,
+												theSessionID,
+												writeLog);
+											dbFunctions.insertDB({
+												'access_token': bodyObj.access_token,
+												'expires_in': bodyObj.expires_in,
+												'refresh_token': bodyObj.refresh_token,
+												'refresh_token_expires_in': bodyObj.refresh_token_expires_in,
+												'email': email
+											}, dbConfig.tokenDBName, function (e, result) {
+												if (e) {
+													writeLog(theSessionID, 'fatal', e);
+													sessionDisabler(req, writeLog,
+														'line 119 of authRouter.js');
+													res.render('error', {
+														error: e,
+														tokenInfo: ''
+													});
+												} else {
+													writeLog(theSessionID, 'debug',
+														'token has been insert into database: ' + dbConfig.tokenDBName);
+												}
+											});
+										} else {
+											writeLog(theSessionID, 'fatal', error);
+											res.render('error', {
+												error: 'Failed to get user email: ' + error,
+												tokenInfo: ''
+											});
+										}
 									});
-								} else {
-									writeLog(theSessionID, 'fatal', 'Failed to get Access Token. Session is going to be destroyed: ' + bodyObj.message);
-									sessionDisabler(req, writeLog, 'line 105 of authRouter.js');
-									res.render('error', {
-										error: 'You are not anthorizated!',
-										tokenInfo: ''
-									});
-								}
+								res.render('access_interface', {
+									tokenInfo: bodyObj
+								});
+							} else {
+								writeLog(theSessionID, 'fatal',
+									'Failed to get Access Token. Session is going to be destroyed: ' + bodyObj.message);
+								sessionDisabler(req, writeLog, 'line 105 of authRouter.js');
+								res.render('error', {
+									error: 'You are not anthorizated!',
+									tokenInfo: ''
+								});
+							}
 						} else {
 							writeLog(theSessionID, 'fatal', err + 'Session is going to be destroyed!');
 							sessionDisabler(req, writeLog, 'line 113 of authRouter.js');
@@ -117,9 +157,9 @@ module.exports = function (oauth, writeLog) {
 								tokenInfo: ''
 							});
 						}
-				});
+					});
 			}
-	});
+		});
 
 	return authRouter;
 };

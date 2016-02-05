@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/displayAllAdminUser.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center - Click <a href="/admin/adminUserLogout" style="text-decoration:none;color:red" onclick="return confirm('Are you sure you want to log out?')">Logout</a> to sign out.
+		<br /><br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red">Super Admin</a> (Click to view/update your profile.)
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/signUpPage" target="_blank" style="text-decoration:none;color:red">HERE</a> to create a new administrator account.	
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />
+		Users: <%if (actionResult) {%><span style="text-decoration:none;color:red">- <%=actionResult%></span><%}%><br /><br />	
+		<table style="border:1px dashed #333;" width="65%">
+			<tr height="40px" align="center" valign="middle">
+				<td>UserID</td>
+				<td>Username</td>
+				<td>Email</td>
+				<td>Update</td>
+				<td>Remove</td>
+			</tr>
+		<%if (users) {%>
+			<%for (var i=0; i<users.length; i++) {%>
+			<tr height="40px" align="center" valign="middle">
+				<td><%=users[i]._id%></td>
+				<td><%=users[i].username%></td>
+				<td><%=users[i].email%></td>
+				<td>
+					<form action="/admin/superAdminUpdatePage" method="post" style="padding:0px;margin:0px;">
+						<input type="hidden" name="userID" value="<%=users[i]._id%>"/>
+						<input type="hidden" name="superAdminID" value="<%=superAdminID%>"/>
+						<input type="hidden" name="username" value="<%=users[i].username%>"/>
+						<input type="hidden" name="email" value="<%=users[i].email%>"/>
+						<input type="submit" value="Update"/>
+					</form>
+				</td>
+				<td>
+					<form action="/admin/superAdminRemoveUser" method="post" style="padding:0px;margin:0px;" onsubmit="return confirm('Are you sure you want to remove the user?')">
+						<input type="hidden" name="userID" value="<%=users[i]._id%>"/>
+						<input type="hidden" name="superAdminID" value="<%=superAdminID%>"/>
+						<input type="submit" value="Remove"/>
+					</form>	
+				</td>
+			</tr>
+			<%}%>
+		<%}%>
+		</table>
+	</body>
+</html>
+

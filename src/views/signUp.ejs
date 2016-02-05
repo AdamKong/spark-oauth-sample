@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/adminSignUp.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center - Click <a href="/admin/adminUserLogout" style="text-decoration:none;color:red" onclick="return confirm('Are you sure you want to log out?')">Logout</a> to sign out.
+		<br /><br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red">Super Admin</a> (Click to view/update your profile.)
+		<br />
+		<br />
+		Super Admin Only - Click <a href="/admin/superAdmin" style="text-decoration:none;color:red">HERE</a> to manage all the administrators.
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />Sign Up A New Administrator (could add email verification by yourself here.) <span style="text-decoration:none;color:red">- Super Admin Only</span><br /><br />		
+		<form action="/admin/signUp" method="post">
+			Username: <input type="text" name="username"/> (Only letter, number and underscore are allowed in username, within 3~20 characters.)<br /><br /> 
+			Password: <input type="text" name="password"/> (6 characters at least)<br /><br />
+			Re-Enter: <input type="text" name="re_password"/><br /><br />
+			Email: <input type="text" name="email"/><br /><br /> 
+			<input type="reset" value="Reset"/>   <input type="submit" value="Sign Up"/>
+		</form>
+		<br />
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br>
+	</body>
+</html>

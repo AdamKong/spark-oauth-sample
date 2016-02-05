@@ -22,13 +22,18 @@
   },
   "homepage": "https://github.com/AdamKong/spark-oauth-sample#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "log4js": "^0.6.29",
+    "mongodb": "^2.1.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "request": "^2.67.0",
+    "serve-favicon": "^2.3.0",
     "uuid": "^2.0.1"
   }
 }

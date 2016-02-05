@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/js/manageToken.js'></script>
+	</head>
+	<body style="text-align:left" bgcolor="#B0C4DE">
+		<br /><br />
+		Welcome To OAuth Admin Center - Click <a href="/admin/adminUserLogout" style="text-decoration:none;color:red" onclick="return confirm('Are you sure you want to log out?')">Logout</a> to sign out.
+		<br /><br />
+		<hr style="border: 1px #FFFFFF solid;width:70%;" align="left"/>
+		<br />
+		<%if (user === superAdminUsername) {%>
+			You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red">Super Admin</a> (Click to view/update your profile.)
+			<br />
+			<br />
+			Super Admin Only - Click <a href="/admin/signUpPage" target="_blank" style="text-decoration:none;color:red">HERE</a> to create a new administrator account.	
+			<br />
+			<br />
+			Super Admin Only - Click <a href="/admin/superAdmin" style="text-decoration:none;color:red">HERE</a> to manage all the administrators.
+		<%} else {%>
+			You are logged in, as <a href="/admin/profile" target="_blank" style="text-decoration:none;color:red"><%=user%></a> (Click to view/update your profile.)		
+		<%}%>
+		<br />
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:50%;" align="left"/>
+		<br />
+		<br />
+		Please input the email of the person whose token you want to get:
+		<br /><br />
+		<form method="post" action="/admin/displayTokens">
+			Email: <input type="text" name="email"/><br /><br />
+			<input type="reset" value="Reset"/>   <input type="submit" name="s" value="Submit"/>
+		</form>
+		<br />
+		<hr style="border: 1px #FFFFFF solid;width:50%;" align="left"/>
+		<br />
+		<a id="<%=anchorID%>" name="locator"></a>
+		<%if(error) {%>
+			You got error:
+			<br />
+			<hr style="border: 1px #FFFFFF solid;width:35%;" align="left"/>
+			<br />
+			Error Message: <span style="text-decoration:none;color:red"><%=error%></span>		
+		<%}%>		
+		<%if(tokens) {%>
+			The Tokens:
+			<br />
+			<hr style="border: 1px #FFFFFF solid;width:50%;" align="left"/>
+			<%for (var i=0; i< tokens.length; i++) {%>
+				<a id="<%=i+1%>" name="<%=i+1%>"></a>
+				<br />
+				Record ID: <%=tokens[i]._id%>
+				<br /><br />
+				Access Token: <%=tokens[i].access_token%>
+				<br /><br />
+				It expires in: <%=tokens[i].expires_in%> seconds
+				<br /><br />
+				Refresh Token: <%=tokens[i].refresh_token%>
+				<br /><br />
+				It expires in: <%=tokens[i].refresh_token_expires_in%> seconds
+				<br /><br />
+				Owner's email: <%=tokens[i].email%>
+				<br /><br />
+				<form method="post" action="/admin/refreshTokens">
+				 	<input type="hidden" name="token_id" value="<%=tokens[i]._id%>">
+					<input type="hidden" name="refresh_token" value="<%=tokens[i].refresh_token%>">
+					<input type="hidden" name="email" value="<%=tokens[i].email%>">
+					<input type="hidden" name="anchorID" value="<%=i+1%>" />
+					<input type="submit" name="s" value="Refresh This Token"/>
+				</form>
+				<form method="post" action="/admin/removeTokens">
+				 	<input type="hidden" name="token_id" value="<%=tokens[i]._id%>">
+					<input type="hidden" name="refresh_token" value="<%=tokens[i].refresh_token%>">
+					<input type="hidden" name="email" value="<%=tokens[i].email%>">
+					<input type="hidden" name="anchorID" value="<%=i+1%>" />
+					<input type="submit" name="s" value="Remove This Token"/> (Only remove from database. Spark API currently does not provide a method to deactivate a token!)
+				</form>
+				<hr style="border: 1px #FFFFFF solid;width:50%;" align="left"/>
+			<%}%>
+		<%}%>		
+		<br /><br /><br /><br /><br />
+	</body>
+</html>

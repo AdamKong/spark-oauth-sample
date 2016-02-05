@@ -67,4 +67,3 @@ module.exports = function (logLevel) {
 
 	return writeLog;
 };
-

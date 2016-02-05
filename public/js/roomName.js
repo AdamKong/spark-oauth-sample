@@ -14,10 +14,14 @@ window.onload = function () {
 			fm.roomName.value = '';
 			fm.roomName.focus();
 			return false;
+		} else {
+			fm.s1.disabled = 'disabled';
+			return true;
 		}
-		return true;
 	};
-	
+
 	// forbid the right-click
-	document.oncontextmenu=function(e){return false;}
+	document.oncontextmenu = function (e) {
+		return false;
+	};
 };

@@ -2,13 +2,13 @@ var https = require('https');
 
 module.exports = function (token, roomName, requesterEmail, sessionID, writeLog, callback) {
 
-	writeLog(sessionID, 'debug', 'Start creating a new roow now.');
+	writeLog(sessionID, 'debug', 'Start creating a new roow now. room name:' + roomName);
 	var postRoomData = JSON.stringify({
 		'title': roomName
 	});
 
 	var roomOptions = {
-		host: 'api.ciscosparkxx.com',
+		host: 'api.ciscospark.com',
 		path: '/v1/rooms',
 		method: 'post',
 		headers: {
@@ -27,7 +27,7 @@ module.exports = function (token, roomName, requesterEmail, sessionID, writeLog,
 		response.on('end', function () {
 			if (JSON.parse(data).id) {
 				var newRoomID = JSON.parse(data).id;
-				require('../actions/getUserEmail.js')(token.access_token,
+				require('./getUserEmail.js')(token.access_token,
 					sessionID,
 					writeLog,
 					function (error, email) {
