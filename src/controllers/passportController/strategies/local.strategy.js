@@ -19,7 +19,7 @@ module.exports = function (dbConfig, writeLog) {
 				if (err) {
 					writeLog(theSessionID, 'fatal',
 						err + ' How did you get in here? Illegal Operation, session is going to be destroyed!');
-					sessionDisabler(req, writeLog, 'line 23 of local.strategy.js');
+					sessionDisabler(req, writeLog, 'line 22 of local.strategy.js');
 					callback(err + ' How did you get in here? Illegal Operation, session is going to be destroyed!', false);
 				} else {
 					// looking for user by username.
@@ -31,7 +31,7 @@ module.exports = function (dbConfig, writeLog) {
 					dbFunctions.findUsersByUsername(user.username, function (e, users) {
 						if (e) {
 							writeLog(theSessionID, 'fatal', e);
-							sessionDisabler(req, writeLog, 'line 36 of local.strategy.js');
+							sessionDisabler(req, writeLog, 'line 34 of local.strategy.js');
 							callback(null, false, {
 								message: e
 							});
@@ -52,13 +52,6 @@ module.exports = function (dbConfig, writeLog) {
 									message: 'Password is wrong!'
 								});
 							} else {
-//								callback(null, {
-//									_id: users[i]._id,
-//									username: users[i].username,
-//									password: users[i].password,
-//									email: users[i].email,
-//									sessionID: theSessionID
-//								});
 								callback(null, users[i]);
 							}
 						}

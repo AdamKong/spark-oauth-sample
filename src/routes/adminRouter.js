@@ -51,7 +51,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 		.all(function (req, res, next) {
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 408 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 54 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the super admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -80,7 +80,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 			var theSessionID = req.sessionID;
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 408 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 83 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the Super Admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -89,14 +89,14 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					// This is to refuse direct access
 					if (!req.session.signUpSessionID) {
 						writeLog(theSessionID, 'fatal', 'Please do not access /admin/signUp router directly. Go to admin/signUpPage to come in. Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 22 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 92 of adminRouter.js');
 						res.render('adminError', {
 							error: 'Please do not come into /admin/signUp directly. Illegal Operation, session destroyed!',
 							next: '/admin/signUpPage'
 						});
 					} else if (req.session.signedUp) {
 						writeLog(theSessionID, 'fatal', 'You have ever reached /admin/signUp in the session. Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 28 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 99 of adminRouter.js');
 						res.render('adminError', {
 							error: 'You have ever reached /admin/signUp in the session. Illegal Operation, session is going to be destroyed!',
 							next: '/admin/signUpPage'
@@ -125,7 +125,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (err) {
 						writeLog(theSessionID, 'fatal',
 							err + ' How did you get in here? Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 52 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 128 of adminRouter.js');
 						res.render('adminError', {
 							error: err + ' How did you get in here? Illegal Operation, session is going to be destroyed!',
 							next: '/admin/signUpPage'
@@ -147,7 +147,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 										if (e) {
 											writeLog(theSessionID, 'fatal', e);
 											sessionDisabler(req, writeLog,
-												'line 67 of adminRouter.js');
+												'line 150 of adminRouter.js');
 											res.render('adminError', {
 												error: e,
 												next: '/admin/signUpPage'
@@ -208,7 +208,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 			// This is to refuse direct access
 			if (!req.session.signInSessionID) {
 				writeLog(theSessionID, 'fatal', 'Please do not access /admin/signIn router directly. Go to /admin page to come in. Illegal Operation, session is going to be destroyed!');
-				sessionDisabler(req, writeLog, 'line 132 of adminRouter.js');
+				sessionDisabler(req, writeLog, 'line 211 of adminRouter.js');
 				res.render('adminError', {
 					error: 'Please do not come in /admin/signIn directly. Illegal Operation, session destroyed!',
 					next: '/admin'
@@ -278,7 +278,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (err) {
 						writeLog(theSessionID, 'fatal',
 							err + ' How did you get in here? Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 183 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 281 of adminRouter.js');
 						res.render('adminError', {
 							error: err,
 							next: '/admin'
@@ -341,7 +341,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (error) {
 						writeLog(theSessionID, 'fatal',
 							error + '. You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 243 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 344 of adminRouter.js');
 						res.render('adminError', {
 							error: error + '. You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!',
 							next: '/admin'
@@ -433,7 +433,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (error) {
 						writeLog(theSessionID, 'fatal',
 							error + ' You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 324 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 436 of adminRouter.js');
 						res.render('adminError', {
 							error: error + ' You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!',
 							next: '/admin'
@@ -529,7 +529,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (err) {
 						writeLog(theSessionID, 'fatal',
 							err + ' How did you get in here? Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 370 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 532 of adminRouter.js');
 						res.render('adminError', {
 							error: err + ' How did you get in here? Illegal Operation, session is going to be destroyed!',
 							next: '/admin'
@@ -545,7 +545,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 							if (err) {
 								writeLog(theSessionID, 'fatal',
 									err + ' Got problem when looking for the logged-in user. Plaese re-login. The current senssion is going to be destroyed!');
-								sessionDisabler(req, writeLog, 'line 370 of adminRouter.js');
+								sessionDisabler(req, writeLog, 'line 548 of adminRouter.js');
 								res.render('adminError', {
 									error: err + ' Got problem when looking for the logged-in user. Plaese re-login. The current senssion has been destroyed!',
 									next: '/admin'
@@ -595,7 +595,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 																		writeLog(theSessionID, 'debug',
 																			'username: ' + user.username + 'has been modified!. The current session has been destroyed and the user needs to re-login.');
 																		sessionDisabler(req, writeLog,
-																			'line 391 of adminRouter.js');
+																			'line 598 of adminRouter.js');
 																		res.render('adminError', {
 																			error: 'Your profile has been updated, and the current session has been destroyed. Please click the below red Here to re-login.',
 																			next: '/admin'
@@ -606,7 +606,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 													});
 											} else {
 												writeLog(theSessionID, 'fatal', 'Can not modify username here. How did you get in here? I see the modified username is : ' + user.username + '. Session is going to be destroyed. Please re-login.');
-												sessionDisabler(req, writeLog, 'line 370 of adminRouter.js');
+												sessionDisabler(req, writeLog, 'line 609 of adminRouter.js');
 												res.render('adminError', {
 													error: 'Can not modify username here. How did you get in here? I see the modified username is: ' + user.username + '. Session is going to be destroyed. Please re-login.',
 													next: '/admin'
@@ -625,7 +625,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 		.all(function (req, res, next) {
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 408 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 628 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the super admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -671,7 +671,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 		.all(function (req, res, next) {
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 408 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 674 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the super admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -704,7 +704,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 		.all(function (req, res, next) {
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 526 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 707 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the super admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -745,7 +745,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (error) {
 						writeLog(theSessionID, 'fatal',
 							error + ' How did you get in here? Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 562 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 748 of adminRouter.js');
 						res.render('adminError', {
 							error: error + ' How did you get in here? Illegal Operation, session is going to be destroyed!',
 							next: '/admin'
@@ -777,11 +777,12 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 									}
 								});
 							} else {
-								// 比较是否form的值发生变化. 如果没有发生变化, 则报提示,并不执行.
+								// Compare to check that if there is any change in the form
+								// if no change, it will prompt and not execute.
 								dbFunctions.findUserByID(req.user._id, function (e, user) {
 									if (e) {
 										writeLog(theSessionID, 'error', 'Ohh, I can not find the super admin whose ID is :' + req.user._id + '. Please re-login');
-										sessionDisabler(req, writeLog, 'the line 767 of adminRouter.js');
+										sessionDisabler(req, writeLog, 'the line 785 of adminRouter.js');
 										res.render('adminError', {
 											error: 'Ohh, I can not find the super admin whose ID is :' + req.user._id + '. Please re-login',
 											next: '/admin'
@@ -842,7 +843,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 																// He/she needs to re-login
 																writeLog(theSessionID, 'debug',
 																	'Your profile (as Super Admin) has been updated, and the current session has been destroyed. Needs to re-login. The Super Admin ID is:' + _userID);
-																sessionDisabler(req, writeLog, 'line 673 of adminRouter.js');
+																sessionDisabler(req, writeLog, 'line 846 of adminRouter.js');
 																res.render('adminError', {
 																	error: 'Your profile (as Super Admin) has been updated, and the current session has been destroyed. Please click the below red Here to re-login.',
 																	next: '/admin'
@@ -1029,7 +1030,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 		.all(function (req, res, next) {
 			if (req.isAuthenticated()) {
 				if (req.user.username !== superAdminAccount.username) {
-					sessionDisabler(req, writeLog, 'line 408 of adminRouter.js');
+					sessionDisabler(req, writeLog, 'line 1033 of adminRouter.js');
 					res.render('adminError', {
 						error: 'Please log in as the super admin first. Current session has been destoryed!',
 						next: '/admin'
@@ -1056,7 +1057,7 @@ module.exports = function (dbConfig, superAdminAccount, oauth, writeLog) {
 					if (error) {
 						writeLog(theSessionID, 'fatal',
 							error + ' You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!');
-						sessionDisabler(req, writeLog, 'line 633 of adminRouter.js');
+						sessionDisabler(req, writeLog, 'line 1060 of adminRouter.js');
 						res.render('adminError', {
 							error: error + ' You should not be able to modify anything in the form of last step. Illegal Operation, session is going to be destroyed!',
 							next: '/admin'

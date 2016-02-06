@@ -84,7 +84,7 @@ module.exports = function (oauth, dbConfig, writeLog) {
 			console.log(oauth.state);
 			if (req.query.state !== oauth.state) {
 				writeLog(theSessionID, 'fatal', '"state" has been tampered. Session is going to be destroyed!');
-				sessionDisabler(req, writeLog, 'line 85 of authRouter.js');
+				sessionDisabler(req, writeLog, 'line 87 of authRouter.js');
 				res.render('error', {
 					error: '"state" has been tampered. Session has been destroyed!',
 					tokenInfo: ''
@@ -118,7 +118,7 @@ module.exports = function (oauth, dbConfig, writeLog) {
 												if (e) {
 													writeLog(theSessionID, 'fatal', e);
 													sessionDisabler(req, writeLog,
-														'line 119 of authRouter.js');
+														'line 121 of authRouter.js');
 													res.render('error', {
 														error: e,
 														tokenInfo: ''
@@ -142,7 +142,7 @@ module.exports = function (oauth, dbConfig, writeLog) {
 							} else {
 								writeLog(theSessionID, 'fatal',
 									'Failed to get Access Token. Session is going to be destroyed: ' + bodyObj.message);
-								sessionDisabler(req, writeLog, 'line 105 of authRouter.js');
+								sessionDisabler(req, writeLog, 'line 145 of authRouter.js');
 								res.render('error', {
 									error: 'You are not anthorizated!',
 									tokenInfo: ''
@@ -150,7 +150,7 @@ module.exports = function (oauth, dbConfig, writeLog) {
 							}
 						} else {
 							writeLog(theSessionID, 'fatal', err + 'Session is going to be destroyed!');
-							sessionDisabler(req, writeLog, 'line 113 of authRouter.js');
+							sessionDisabler(req, writeLog, 'line 153 of authRouter.js');
 							console.log(err);
 							res.render('error', {
 								error: err,

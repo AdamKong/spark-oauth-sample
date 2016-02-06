@@ -18,7 +18,7 @@ module.exports = function (app, dbConfig, writeLog) {
 			writeLog);
 		dbFunctions.findUserByID(id, function (e, user) {
 			if (e) {
-				sessionDisabler(req, writeLog, 'line 32 of passport.js');
+				sessionDisabler(req, writeLog, 'line 21 of passport.js');
 				callback(e, false);
 			} else {
 				writeLog(req.sessionID, 'debug',
