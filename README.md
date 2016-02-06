@@ -13,15 +13,15 @@ You also want a database (here we use mongodb) to store your tokens. Go to https
 
 If you run into the below exception when installing (specifically for bcrypt) on mac, please follow the below steps to install higer version of GCC. This is due to that the version of GCC Apple ships are 4.2 which is ancient, and App don't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and quicker) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here.
 
----------------------------------------------------------------------
+<pre>
 cc1plus: error: unrecognized command line option "-std=gnu++0x"
 make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
 gyp ERR! build error 
 gyp ERR! stack Error: `make` failed with exit code: 2
----------------------------------------------------------------------
+</pre>
+
 
 To install this sample to your local machine, you can either use NPM (Node Package Manager): 
-
 <pre>
 ~$ npm install --save Spark-OAuth-Sample
 </pre>
