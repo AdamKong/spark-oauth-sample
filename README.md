@@ -23,7 +23,11 @@ gyp ERR! stack Error: `make` failed with exit code: 2
 To install this sample to your local machine, you can either use NPM (Node Package Manager): 
 
 <pre>
+<<<<<<< HEAD
 ~$ npm install --save Spark-OAuth-Sample
+=======
+	npm install --save spark-oauth-sample
+>>>>>>> 7a14fe2ad4ff5296a016ea930277fdfb1e3332d5
 </pre>
 
 or download it from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
@@ -71,9 +75,15 @@ If you download the project folder into your local, you just need to CD to the f
 	node app.js
 </pre>
 
+<<<<<<< HEAD
 If you use NPM to install it, the simplest way would be CD to /node_modules/spark-oauth-sample/ then run the above command.
 
 http://host:port/ is the home page of starting requesting token.
+=======
+http://host:port/ is the home page.
+
+Note: A token management center will come soon!
+>>>>>>> 7a14fe2ad4ff5296a016ea930277fdfb1e3332d5
 
 Before you get into the admin center, you need to initialize the admin system (initialize super admin account specifically) by running http://host:port/admin/initialize in browser (You will be automatically logged in as super admin user after initialization!)
 
