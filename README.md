@@ -13,20 +13,17 @@ You also want a database (here we use mongodb) to store your tokens. Go to https
 
 If you run into the below exception when installing (specifically for bcrypt) on mac, please follow the below steps to install higer version of GCC. This is due to that the version of GCC Apple ships are 4.2 which is ancient, and App don't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and quicker) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here.
 
-<pre>
-cc1plus: error: unrecognized command line option "-std=gnu++0x"
-make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
-gyp ERR! build error 
-gyp ERR! stack Error: `make` failed with exit code: 2
-</pre>
+	cc1plus: error: unrecognized command line option "-std=gnu++0x"
+	make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
+	gyp ERR! build error 
+	gyp ERR! stack Error: `make` failed with exit code: 2
 
 
 To install this sample to your local machine, you can either use NPM (Node Package Manager): 
-<pre>
-~$ npm install --save Spark-OAuth-Sample
-</pre>
 
-or download it from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
+	~$ npm install --save spark-oauth-sample
+
+or download from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
 
 
 Configuration
@@ -67,14 +64,19 @@ Running
 -------
 
 If you download the project folder into your local, you just need to CD to the folder and run the below command.
-<pre>
+
 	node app.js
-</pre>
 
 If you use NPM to install, the simplest way would be CD to /node_modules/spark-oauth-sample/ then run the above command.
 
-http://host:port/ is the home page of starting requesting token.
+Home page of starting requesting token：
 
-Before you get into the admin center, you need to initialize the admin system (initialize super admin account specifically) by running http://host:port/admin/initialize in browser (You will be automatically logged in as super admin user after initialization!)
+	http://host:port
 
-Admin login page - http://host:port/admin/
+Before you get into the admin center, you need to initialize the admin system (specifically initialize super admin account) by running the below link in browser (You will be automatically logged in as super admin user after initialization!)
+
+	http://host:port/admin/initialize
+	
+Admin login page：
+
+	http://host:port/admin/
