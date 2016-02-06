@@ -11,19 +11,20 @@ To get started you will first need to have Node.js installed. Going to [node.js]
 
 You also want a database (here we use mongodb) to store your tokens. Go to https://www.mongodb.org/ to download and install it in your local. Please do not forget setting environment variable (export PATH=my_mongodb_server_path/bin:$PATH in your Users/your_username/.bash_profile) so that your machine knows where to run "mongod" command to start mongodb server.
 
-If you run into the below exception when installing (specifically for bcrypt) on mac, please follow the below steps to install higer version of GCC. This is due to that the version of GCC Apple ships are 4.2 which is ancient, and App don't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and quicker) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here.
-
-	cc1plus: error: unrecognized command line option "-std=gnu++0x"
-	make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
-	gyp ERR! build error 
-	gyp ERR! stack Error: `make` failed with exit code: 2
-
 
 To install this sample to your local machine, you can either use NPM (Node Package Manager): 
 
 	~$ npm install --save spark-oauth-sample
 
 or download from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
+
+
+If you run into the below exception when installing (specifically for bcrypt) by NPM on mac, please install higer version of GCC. This is due to that the version of GCC Apple ships are 4.2 which is ancient, and App don't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and quicker) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here.
+
+	cc1plus: error: unrecognized command line option "-std=gnu++0x"
+	make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
+	gyp ERR! build error 
+	gyp ERR! stack Error: `make` failed with exit code: 2
 
 
 Configuration
@@ -43,19 +44,19 @@ Configuration
 
 7. Copy out the values of the scope from your application, use whitespace character to seperate them if there are multiple values.
 
-8. Encode the values (from a tool, i.e. http://meyerweb.com/eric/tools/dencoder/), then fill the encoded values into "scope" field.
+8. Encode the values (from a tool, i.e. http://meyerweb.com/eric/tools/dencoder/), then fill the encoded values into "scope" field. (For 7 and 8, please follow the existing value in config.json as sample if you have problem/question)
 
 9. Change the "contactEmail" field to your email address (as the requester).
 
-10. You can change the 'state' field to a more secure string (i.e. a random UUID string), or keep it as it as just for testing (do not recommand using special characters).
+10. You can change the 'state' field to a more secure string (i.e. a random UUID string), or keep it as it is just for testing (do not recommand using special characters).
 
-11. If you want to put the sample into a public address, then you will need to change the hostname 127.0.0.0 and port 3000 to the real values. If you test it in local, make sure you use 127.0.0.1 instead of localhost as host name (You also need to use 127.0.0.1 if you want to set a local redirect url in Spark app).
+11. If you want to put the sample into a public address, then you will need to change the hostname 127.0.0.0 and port 3000 to the real values. If you test it in local, make sure you use 127.0.0.1 instead of localhost as host name (You also need to use 127.0.0.1 instead of localhost if you want to set a local redirect url in Spark app).
 
-12. The logLevel is for defining log level (debug/warn/error/fatal), which is used for troubleshooting.
+12. The logLevel is for defining the level (debug/warn/error/fatal) of logs, which are used for troubleshooting.
 
 13. The "dbConfig" section is for configuring the ip, port, the name of the DB storing admin users and the name of DB storing tokens.
 
-14. The "superAdminAccount" section is for configureing the profile of super admin account. It has the highest level permission, like create/update/remove a normal admin account. Normal admin account can only refresh/remove token and update his/her own profile (except username).
+14. The "superAdminAccount" section is for configureing the profile of the super admin account. It has the highest level permission, like create/update/remove a normal admin account. Normal admin account can only refresh/remove token and update his/her own profile (except username).
 
 15. Save it, and the configurtion is compelte.
 
