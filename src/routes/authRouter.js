@@ -80,8 +80,8 @@ module.exports = function (oauth, dbConfig, writeLog) {
 			req.session.token = 'initial_value';
 			var theSessionID = req.sessionID;
 			// Validate that if the "state" has been tampered.
-			console.log(req.query.state);
-			console.log(oauth.state);
+			// console.log(req.query.state); --> state spark returns
+			// console.log(oauth.state); --> state in conf/config.json
 			if (req.query.state !== oauth.state) {
 				writeLog(theSessionID, 'fatal', '"state" has been tampered. Session is going to be destroyed!');
 				sessionDisabler(req, writeLog, 'line 87 of authRouter.js');
