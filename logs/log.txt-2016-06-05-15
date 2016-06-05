@@ -28,3 +28,22 @@
 2016-06-05T15:28:52+0800 ADKONG-M-Q4TA DEBUG 845bfbfd-2af1-44e2-bdd0-853f0cd1b869: Now within auth/spark now.
 2016-06-05T15:28:52+0800 ADKONG-M-Q4TA DEBUG 845bfbfd-2af1-44e2-bdd0-853f0cd1b869: Start requesting a webex link now.
 2016-06-05T15:28:56+0800 ADKONG-M-Q4TA DEBUG 845bfbfd-2af1-44e2-bdd0-853f0cd1b869: Got Webex redirect URL: https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dyour_clientID%26redirect_uri%3Dhttp%253A%252F%252F127.0.0.1%253A3000%252Fauth%252Fspark%252Fcallback%26scope%3Dspark%253Arooms_read%2520spark%253Amemberships_read%2520spark%253Amessages_read%2520spark%253Apeople_read%2520spark%253Amemberships_write%2520spark%253Amessages_write%2520spark%253Arooms_write%26state%3Dtest
+2016-06-05T15:48:22+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Added a session variable "mySessionID"
+2016-06-05T15:48:25+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Now within auth/spark now.
+2016-06-05T15:48:25+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Start requesting a webex link now.
+2016-06-05T15:48:30+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Got Webex redirect URL: https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3DCa1d294c197fe25cfff50cee435e4cd79572ff5c10913dd9247571217d9396165%26redirect_uri%3Dhttp%253A%252F%252F127.0.0.1%253A3000%252Fauth%252Fspark%252Fcallback%26scope%3Dspark%253Arooms_read%2520spark%253Amemberships_read%2520spark%253Amessages_read%2520spark%253Apeople_read%2520spark%253Amemberships_write%2520spark%253Amessages_write%2520spark%253Arooms_write%26state%3Dtest
+2016-06-05T15:48:52+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Start getting token now.
+2016-06-05T15:48:53+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Got response from Spark API: {"access_token":"NWQzMDI0NjAtOGZlOS00ODY2LTg4ZmEtMjc4NGUwMjcyZDAyNjE2MDVlM2QtNzJl","expires_in":604799,"refresh_token":"ZWNmY2JhZGQtN2FkOS00ZjdkLWJiNzAtMzA5MDcxMjgzOTRjNTA2ZTE1ZDYtODhh","refresh_token_expires_in":88463623}
+2016-06-05T15:48:53+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Token is saved in session.
+2016-06-05T15:48:53+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Start getting user email now.
+2016-06-05T15:48:54+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Got requester email: adkong@cisco.com
+2016-06-05T15:48:54+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Connected to database:tokenCenter
+2016-06-05T15:48:54+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: object has been inserted into database:tokenCenter. Object:{"access_token":"NWQzMDI0NjAtOGZlOS00ODY2LTg4ZmEtMjc4NGUwMjcyZDAyNjE2MDVlM2QtNzJl","expires_in":604799,"refresh_token":"ZWNmY2JhZGQtN2FkOS00ZjdkLWJiNzAtMzA5MDcxMjgzOTRjNTA2ZTE1ZDYtODhh","refresh_token_expires_in":88463623,"email":"adkong@cisco.com","_id":"5753d9668447ff412d1b8175"}
+2016-06-05T15:48:54+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: token has been insert into database: tokenCenter
+2016-06-05T15:49:00+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Within the /createAndJoinRoom now!
+2016-06-05T15:49:00+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Start creating a new roow now. room name:Rock Spark Room
+2016-06-05T15:49:02+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Start getting user email now.
+2016-06-05T15:49:02+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: Got requester email: adkong@cisco.com
+2016-06-05T15:49:02+0800 ADKONG-M-Q4TA FATAL 8ccc945e-29e6-4f87-abec-91cfde3a0300: User email can not be the same as the requester email.
+2016-06-05T15:49:02+0800 ADKONG-M-Q4TA DEBUG 8ccc945e-29e6-4f87-abec-91cfde3a0300: User email can not be the same as the requester email.
+2016-06-05T15:49:02+0800 ADKONG-M-Q4TA FATAL 8ccc945e-29e6-4f87-abec-91cfde3a0300: In line 70 of actionsRouter.js. Session has been destroyed.

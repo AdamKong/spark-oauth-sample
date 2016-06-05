@@ -7,13 +7,13 @@
 		"responseType": "code",
 		"grantType": "authorization_code",
 		"refreshToken_type": "refresh_token",
-		"clientID": "your_clientID",
+		"clientID": "Ca1d294c197fe25cfff50cee435e4cd79572ff5c10913dd9247571217d9396165",
 		"redirectURI": "http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2Fspark%2Fcallback",
 		"redirectURIUnencoded": "http://127.0.0.1:3000/auth/spark/callback",
 		"scope": "spark%3Arooms_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Apeople_read%20spark%3Amemberships_write%20spark%3Amessages_write%20spark%3Arooms_write",
 		"state": "test",
-		"contactEmail": "xxxxx@cisco.com",
-		"cilentSecret": "your_client_secret"
+		"contactEmail": "adkong@cisco.com",
+		"cilentSecret": "265e492615fd124e96797f0b933d44cd47b4e71607e20f90a0b8d98024d27706"
 	},
 	"logLevel": "debug",
 	"dbConfig": {
@@ -25,6 +25,6 @@
 	"superAdminAccount": {
 		"username": "admin",
 		"password": "123456",
-		"email": "xxxxx@cisco.com"
+		"email": "adkong@cisco.com"
 	}
 }
