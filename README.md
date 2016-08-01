@@ -19,7 +19,7 @@ To install this sample to your local machine, you can either use NPM (Node Packa
 or download from [here](https://github.com/tropo/tropo-webapi-node/archive/master.zip), then uncompress and place it into your project folder. 
 
 
-If you run into the below exception when installing (specifically for bcrypt) by NPM on Mac, please install higher version of GCC (or just download the project as there is already a set of bcrypt included). This is due to that the version of GCC Apple ships are 4.2 which is ancient, and Apple doesn't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and faster) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here.
+If you run into the below exception when installing (specifically for bcrypt) by NPM on Mac, please install higher version of GCC (or just download the project as there is already a set of bcrypt included). This is due to that the version of GCC Apple ships are 4.2 which is ancient, and Apple doesn't ship a newer version. You can either install a modern GCC from somewhere like Mac Ports (which is probably simpler and faster) or build it by yourself following the instructions at http://gcc.gnu.org/wiki/InstallingGCC. In this case, I used Macports to install GCC5 here .
 
 	cc1plus: error: unrecognized command line option "-std=gnu++0x"
 	make: *** [Release/obj.target/bcrypt_lib/src/blowfish.o] Error 1
