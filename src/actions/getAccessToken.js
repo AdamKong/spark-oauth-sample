@@ -7,7 +7,7 @@ module.exports = function (oauth, sessionID, oAuthCode, writeLog, callback) {
 	var postData = {
 		'grant_type': oauth.grantType,
 		'client_id': oauth.clientID,
-		'client_secret': oauth.cilentSecret,
+		'client_secret': oauth.clientSecret,
 		'code': oAuthCode,
 		'redirect_uri': oauth.redirectURIUnencoded
 	};

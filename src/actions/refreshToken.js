@@ -7,7 +7,7 @@ module.exports = function (oauth, sessionID, refresh_token, writeLog, callback) 
 	var postData = {
 		'grant_type': oauth.refreshToken_type,
 		'client_id': oauth.clientID,
-		'client_secret': oauth.cilentSecret,
+		'client_secret': oauth.clientSecret,
 		'refresh_token': refresh_token
 	};
 

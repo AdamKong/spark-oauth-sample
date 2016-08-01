@@ -1,6 +1,6 @@
 {
 	"name": "spark-oauth-sample",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"description": "This is a Spark OAuth Sample. It contains a) web interface of requesting token, b) a token management center.",
 	"main": "app.js",
 	"scripts": {

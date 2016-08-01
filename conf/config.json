@@ -13,7 +13,7 @@
 		"scope": "spark%3Arooms_read%20spark%3Amemberships_read%20spark%3Amessages_read%20spark%3Apeople_read%20spark%3Amemberships_write%20spark%3Amessages_write%20spark%3Arooms_write",
 		"state": "test",
 		"contactEmail": "xxxxx@cisco.com",
-		"cilentSecret": "your_client_secret"
+		"clientSecret": "your_client_secret"
 	},
 	"logLevel": "debug",
 	"dbConfig": {
